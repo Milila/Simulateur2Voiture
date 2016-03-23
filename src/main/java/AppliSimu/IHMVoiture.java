@@ -1,40 +1,36 @@
-package AppliSimu;
+package appliSimu;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Panel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
-import DomaineVoiture.Voiture;
+
+import domaineRoute.Route;
+import domaineVoiture.Voiture;
 
 public class IHMVoiture extends JFrame implements Observer{
 
 	private double paramatreConversionMetresPixels = 0.5;
 	private Voiture maVoiture;
 	private CommandeVoiture maCommandeVoiture;
+	private Route route;
 	
 	private void initGraphique() {
 		this.setTitle("Simulateur de Voiture");
 		this.setSize(505, 505);
-
-		this.maCommandeVoiture = new CommandeVoiture(this, maVoiture);
-
+		this.setLayout(new BorderLayout());
+		add(this.maCommandeVoiture = new CommandeVoiture(this, maVoiture),BorderLayout.NORTH);
+		add(new IHMRoute(route),BorderLayout.CENTER);
 		this.setVisible(true);
 	}
 	
-	public IHMVoiture(Voiture maVoiture) {
+	public IHMVoiture(Voiture maVoiture, Route route) {
 		super();
 		this.maVoiture = maVoiture;
 		maVoiture.addObserver(this);
+		this.route = route;
 		initGraphique();
 	}
 
@@ -58,6 +54,7 @@ public class IHMVoiture extends JFrame implements Observer{
 		super.paint(contexteGraphique);
 		contexteGraphique.setColor(Color.red);
 		dessinerVoiture(contexteGraphique);
+
 	}
 
 

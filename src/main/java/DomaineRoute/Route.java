@@ -1,4 +1,4 @@
-package DomaineRoute;
+package domaineRoute;
 
 import java.util.Observable;
 
@@ -6,27 +6,32 @@ import java.util.Observable;
  * Created by Responsable on 15/03/2016.
  */
 public class Route extends Observable{
-    float x;
-    float y;
-    float largeur;
+    int x1;
+    int x2;
+    int y1;
+    int y2;
 
-    public float getX() {
-        return x;
+    public int getX1() {
+        return x1;
     }
 
-    public float getY() {
-        return y;
+    public int getX2() {
+        return x2;
     }
 
-    public float getLargeur() {
-        return largeur;
+    public int getY1() {
+        return y1;
+    }
+    public int getY2() {
+        return y2;
     }
 
-    public Route(float x, float y, float largeur)
+    public Route(int x1,int x2, int y1, int y2)
     {
-        this.x=x;
-        this.y=y;
-        this.largeur=largeur;
+        this.x1=x1;
+        this.y1=y1;
+        this.x2 = x2;
+        this.y2 = y2;
     }
 
 }
